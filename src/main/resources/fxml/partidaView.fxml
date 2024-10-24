@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <right>
+      <VBox alignment="TOP_CENTER">
+         <children>
+            <Label alignment="CENTER" text="Puntos:" />
+            <HBox spacing="5.0">
+               <children>
+                  <Label fx:id="nameLabel" text="Nombre" />
+                  <Label fx:id="scoreLabel" text="Puntos" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+   </right>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="hangedmanImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/9.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="wordLabel" text="Label" />
+            <Label fx:id="lettersLabel" text="Label" />
+         </children>
+         <padding>
+            <Insets left="40.0" top="40.0" />
+         </padding>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="50.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="guessField" />
+            <Button mnemonicParsing="false" onAction="#onLetterAction" text="Letra" />
+            <Button mnemonicParsing="false" onAction="#onGuessAction" text="Resolver" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

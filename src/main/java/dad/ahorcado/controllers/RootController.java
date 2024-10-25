@@ -1,10 +1,12 @@
 package dad.ahorcado.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +32,9 @@ public class RootController implements Initializable {
     private Tab puntuacionTab;
 
     @FXML
+    private TextField nameField;
+
+    @FXML
     private TabPane root;
 
     public RootController(){
@@ -45,7 +50,6 @@ public class RootController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        partidaTab.setContent(partidaController.getRoot());
         palabraTab.setContent(palabrasController.getRoot());
         puntuacionTab.setContent(puntuacionesController.getRoot());
     }
@@ -60,5 +64,11 @@ public class RootController implements Initializable {
 
     public PuntuacionesController getPuntuacionesController() {
         return puntuacionesController;
+    }
+
+    @FXML
+    void onStartAction(ActionEvent event) {
+        partidaTab.setContent(partidaController.getRoot());
+        partidaController.setNombre(nameField.getText());
     }
 }

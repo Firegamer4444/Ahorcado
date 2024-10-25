@@ -1,5 +1,7 @@
 package dad.ahorcado.controllers;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +16,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PartidaController implements Initializable {
+
+    // model
+
+    private StringProperty nombre = new SimpleStringProperty();
+    private StringProperty palabraSecreta = new SimpleStringProperty();
+
+    // view
+
     @FXML
     private TextField guessField;
 
@@ -48,10 +58,27 @@ public class PartidaController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
+        // bindings
+        nameLabel.textProperty().bind(nombre.concat(":"));
+        wordLabel.textProperty().bind(palabraSecreta);
+
     }
 
     public BorderPane getRoot() {
         return root;
+    }
+
+    public String getNombre() {
+        return nombre.get();
+    }
+
+    public StringProperty nombreProperty() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre.set(nombre);
     }
 
     @FXML

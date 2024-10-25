@@ -5,9 +5,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class AhorcadoApp extends Application {
@@ -46,6 +45,14 @@ public class AhorcadoApp extends Application {
         super.stop();
         if (!DATA_DIR.exists()){
             DATA_DIR.mkdir();
+        }
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(PALABRAS_FILE))){
+            for (int i = 0; i < rootController.getPalabrasController().getPalabrasList().size(); i++){
+                writer.write(rootController.getPalabrasController().getPalabrasList().get(i));
+                writer.write("\n");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

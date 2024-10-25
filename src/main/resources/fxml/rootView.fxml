@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <TabPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
-    <Tab fx:id="partidaTab" text="Partida" />
+    <Tab fx:id="partidaTab" text="Partida">
+         <content>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <HBox alignment="CENTER" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Label text="Nombre:" />
+                        <TextField fx:id="nameField" />
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#onStartAction" text="Iniciar Partida" />
+               </children>
+            </VBox>
+         </content></Tab>
     <Tab fx:id="palabraTab" text="Palabra" />
       <Tab fx:id="puntuacionTab" text="Puntuacion" />
   </tabs>

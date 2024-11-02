@@ -1,9 +1,13 @@
 package dad.ahorcado.controllers;
 
+import dad.ahorcado.model.Puntuacion;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
@@ -52,6 +56,11 @@ public class RootController implements Initializable {
 
         palabraTab.setContent(palabrasController.getRoot());
         puntuacionTab.setContent(puntuacionesController.getRoot());
+
+        // bindings
+
+        partidaController.palabrasListProperty().bind(palabrasController.palabrasListProperty());
+        palabraTab.disableProperty().bind(partidaController.hasEndedProperty().not());
     }
 
     public TabPane getRoot() {
@@ -68,7 +77,32 @@ public class RootController implements Initializable {
 
     @FXML
     void onStartAction(ActionEvent event) {
-        partidaTab.setContent(partidaController.getRoot());
-        partidaController.setNombre(nameField.getText());
+        if (!nameField.getText().isEmpty()){
+            partidaTab.setContent(partidaController.getRoot());
+            partidaController.setNombre(nameField.getText());
+            partidaController.iniciarPartida();
+
+            boolean scoreExists = false;
+            for (Puntuacion puntuacion : puntuacionesController.getPuntuaciones()){
+                if (puntuacion.getNombre().equals(nameField.getText())){
+                    partidaController.nombreProperty().bind(puntuacion.nombreProperty());
+                    partidaController.puntosProperty().bindBidirectional(puntuacion.puntosProperty());
+                    scoreExists = true;
+                }
+            }
+            if (!scoreExists){
+                puntuacionesController.getPuntuaciones().add(new Puntuacion(new SimpleStringProperty(nameField.getText()) , new SimpleIntegerProperty(0)));
+                partidaController.nombreProperty().bind(puntuacionesController.getPuntuaciones().get(puntuacionesController.getPuntuaciones().size() - 1).nombreProperty());
+                partidaController.puntosProperty().bindBidirectional(puntuacionesController.getPuntuaciones().get(puntuacionesController.getPuntuaciones().size() - 1).puntosProperty());
+            }
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ahorcado");
+            alert.setHeaderText("Error");
+            alert.setContentText("No puedes dejar el nombre vacio");
+            alert.show();
+        }
+
     }
 }

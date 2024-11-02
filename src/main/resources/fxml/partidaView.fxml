@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<BorderPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
    <right>
       <VBox alignment="TOP_CENTER">
          <children>
@@ -33,23 +33,27 @@
          <children>
             <ImageView fx:id="hangedmanImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/9.png" />
+                  <Image url="@../images/8.png" />
                </image>
             </ImageView>
-            <Label fx:id="wordLabel" text="Label" />
+            <Label fx:id="wordLabel" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
             <Label fx:id="lettersLabel" text="Label" />
          </children>
          <padding>
-            <Insets left="40.0" top="40.0" />
+            <Insets left="65.0" top="40.0" />
          </padding>
       </VBox>
    </center>
    <bottom>
       <HBox alignment="CENTER" prefHeight="50.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
+            <Button mnemonicParsing="false" onAction="#onRestartAction" text="Reiniciar Partida" />
             <TextField fx:id="guessField" />
-            <Button mnemonicParsing="false" onAction="#onLetterAction" text="Letra" />
-            <Button mnemonicParsing="false" onAction="#onGuessAction" text="Resolver" />
+            <Button fx:id="guessLetterButton" mnemonicParsing="false" onAction="#onLetterAction" text="Letra" />
+            <Button fx:id="guessWordButton" mnemonicParsing="false" onAction="#onGuessAction" text="Resolver" />
          </children>
       </HBox>
    </bottom>

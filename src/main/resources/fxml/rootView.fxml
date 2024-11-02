@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<TabPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
     <Tab fx:id="partidaTab" text="Partida">
          <content>
@@ -24,7 +24,7 @@
                </children>
             </VBox>
          </content></Tab>
-    <Tab fx:id="palabraTab" text="Palabra" />
-      <Tab fx:id="puntuacionTab" text="Puntuacion" />
+    <Tab fx:id="palabraTab" text="Palabras" />
+      <Tab fx:id="puntuacionTab" text="Puntuaciones" />
   </tabs>
 </TabPane>
